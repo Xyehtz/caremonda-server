@@ -58,5 +58,7 @@ fn route(request: *std.http.Server.Request) !void {
             .GET => request.respond("Usted... usted es un caremondá, ¿escuchó?\n", .{ .status = .ok }),
             else => request.respond("Method not allowed\n", .{ .status = .method_not_allowed }),
         };
+    } else {
+        return request.respond("Bad Request", .{ .status = .bad_request });
     }
 }
